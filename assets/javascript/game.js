@@ -19,14 +19,14 @@ document.onkeyup = function(event) {
   var win = 0;
   var i = 0;
   var guessesLeft = 12;
-
-  document.getElementById("guesses").innerHTML= "Guesses Left: " + guessesLeft;
   
+
   for (var i = 0; i < word.length; i++) {
     if (word[i] === guess) {
       answerArray[i] = guess;
     }
   }
+
   var remaining_letters = 0;
   for (i = 0; i < word.length; i++) {
     if (answerArray[i] === "_") {
@@ -34,29 +34,30 @@ document.onkeyup = function(event) {
     }
   }
 
-  // Letters Already Guessed
+  // Guesses left
 
-  for (var i = 0; i < word.length; i++) {
-    if (word[i] != guess) {
+   for (var i = 0; i < word.length; i++) {
+    if (word[i] !== guess) {
       guessesLeft--;
       document.getElementById("guesses").innerHTML= "Guesses Left: " + guessesLeft;
+      }
     }
-  }
 
   // Reset after player wins
 
   if (remaining_letters == 0) {
+    win++;
     word = songs[Math.floor(Math.random() * songs.length)];
     answerArray = [];
     for (var i = 0; i < word.length; i++) {
       answerArray[i] = "_";
-      win++;
       document.getElementById("wins").innerHTML= "Wins: " + win;
     }
   }
 
   document.getElementById("song").innerHTML= answerArray.join(" ");
 
+  
 
 }
 
