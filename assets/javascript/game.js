@@ -4,6 +4,7 @@ var word="";
 var i = 0;
 var guessesLeft = 12;
 var answerArray = [];
+var badGuessList = []
 
 var keys = [];
 var myDiv = document.getElementById("letters-guessed");
@@ -16,7 +17,7 @@ document.onkeyup = function(event) {
   newDiv.innerHTML = "";
   
   keys.forEach(function(key) {
-    newDiv.innerHTML += key +", ";
+    newDiv.innerHTML += key +" ";
   });
 }
 
@@ -55,8 +56,9 @@ document.onkeyup = function(event) {
     console.log(word.includes(guess));
     } else {
       guessesLeft--;
+      badGuessList.push(guess);
       document.getElementById("guesses").innerHTML= "Guesses Left: " + guessesLeft;
-      document.getElementById("letters").innerHTML= guess;
+      document.getElementById("letters").innerHTML= badGuessList;
     }
 
   // Reset after player wins
@@ -70,8 +72,11 @@ document.onkeyup = function(event) {
       answerArray[i] = "_";
       document.getElementById("wins").innerHTML= "Wins: " + win;
       document.getElementById("guesses").innerHTML= "Guesses Left: " + guessesLeft;
+      document.getElementById("letters").innerHTML= badGuessList = []
     }
   }
+
+  // Reset after running out of guesses
 
   if (guessesLeft == 0) {
     guessesLeft = 12;
@@ -81,6 +86,7 @@ document.onkeyup = function(event) {
       answerArray[i] = "_";
       document.getElementById("wins").innerHTML= "Wins: " + win;
       document.getElementById("guesses").innerHTML= "Guesses Left: " + guessesLeft;
+      document.getElementById("letters").innerHTML= badGuessList = []
     }
   } 
 
