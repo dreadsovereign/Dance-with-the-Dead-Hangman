@@ -1,6 +1,8 @@
 var songs = ["andromeda", "waves", "riot", "diabolic", "cobra"];
-
+var win = 0;
 var word="";
+var i = 0;
+var guessesLeft = 12;
 var answerArray = [];
 
 function chooseSong(){
@@ -16,10 +18,6 @@ chooseSong();
 
 document.onkeyup = function(event) {
   var guess = event.key;
-  var win = 0;
-  var i = 0;
-  var guessesLeft = 12;
-  
 
   for (var i = 0; i < word.length; i++) {
     if (word[i] === guess) {
@@ -37,7 +35,7 @@ document.onkeyup = function(event) {
   // Guesses left
 
    for (var i = 0; i < word.length; i++) {
-    if (word[i] !== guess) {
+    if (word.length[i] !== guess) {
       guessesLeft--;
       document.getElementById("guesses").innerHTML= "Guesses Left: " + guessesLeft;
       }
