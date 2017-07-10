@@ -5,6 +5,21 @@ var i = 0;
 var guessesLeft = 12;
 var answerArray = [];
 
+var keys = [];
+var myDiv = document.getElementById("letters-guessed");
+var newDiv = document.createElement("span");
+myDiv.appendChild(newDiv);
+
+document.onkeyup = function(event) {
+  keys.push(event.key);
+  
+  newDiv.innerHTML = "";
+  
+  keys.forEach(function(key) {
+    newDiv.innerHTML += key +", ";
+  });
+}
+
 function chooseSong() {
   word = songs[Math.floor(Math.random() * songs.length)];
   answerArray = [];
@@ -34,15 +49,15 @@ document.onkeyup = function(event) {
   }
 
   // Guesses left
-
    
-    if (word.includes(guess)) {
+  if (word.includes(guess)) {
+    document.getElementById("guesses").innerHTML= "Guesses Left: " + guessesLeft;
+    console.log(word.includes(guess));
+    } else {
+      guessesLeft--;
       document.getElementById("guesses").innerHTML= "Guesses Left: " + guessesLeft;
-      console.log(word.includes(guess));
-      } else {
-        guessesLeft--;
-        document.getElementById("guesses").innerHTML= "Guesses Left: " + guessesLeft;
-      }
+      document.getElementById("letters").innerHTML= guess;
+    }
 
   // Reset after player wins
 
@@ -70,8 +85,6 @@ document.onkeyup = function(event) {
   } 
 
   document.getElementById("song").innerHTML= answerArray.join(" ");
-
-  
 
 }
 
