@@ -45,6 +45,7 @@ document.onkeyup = function(event) {
 
   if (remaining_letters == 0) {
     win++;
+    guessesLeft = 12;
     word = songs[Math.floor(Math.random() * songs.length)];
     answerArray = [];
     for (var i = 0; i < word.length; i++) {
