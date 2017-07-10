@@ -5,7 +5,7 @@ var i = 0;
 var guessesLeft = 12;
 var answerArray = [];
 
-function chooseSong(){
+function chooseSong() {
   word = songs[Math.floor(Math.random() * songs.length)];
   answerArray = [];
   for (var i = 0; i < word.length; i++) {
@@ -13,6 +13,7 @@ function chooseSong(){
   }
   document.getElementById("song").innerHTML= answerArray.join(" ");
   document.getElementById("message").innerHTML= "Press Any Key to Get Started"
+  document.getElementById("guesses").innerHTML= "Guesses Left: " + guessesLeft;
 }
 chooseSong();
 
@@ -35,9 +36,11 @@ document.onkeyup = function(event) {
   // Guesses left
 
    for (var i = 0; i < word.length; i++) {
-    if (word.length[i] !== guess) {
-      guessesLeft--;
+    if (word.includes(guess)) {
       document.getElementById("guesses").innerHTML= "Guesses Left: " + guessesLeft;
+      console.log(word.includes(guess));
+      } else {
+        guessesLeft--;
       }
     }
 
@@ -51,8 +54,20 @@ document.onkeyup = function(event) {
     for (var i = 0; i < word.length; i++) {
       answerArray[i] = "_";
       document.getElementById("wins").innerHTML= "Wins: " + win;
+      document.getElementById("guesses").innerHTML= "Guesses Left: " + guessesLeft;
     }
   }
+
+  if (guessesLeft == 0) {
+    guessesLeft = 12;
+    word = songs[Math.floor(Math.random() * songs.length)];
+    answerArray = [];
+    for (var i = 0; i < word.length; i++) {
+      answerArray[i] = "_";
+      document.getElementById("wins").innerHTML= "Wins: " + win;
+      document.getElementById("guesses").innerHTML= "Guesses Left: " + guessesLeft;
+    }
+  } 
 
   document.getElementById("song").innerHTML= answerArray.join(" ");
 
