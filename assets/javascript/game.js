@@ -4,22 +4,7 @@ var word="";
 var i = 0;
 var guessesLeft = 12;
 var answerArray = [];
-var badGuessList = []
-
-var keys = [];
-var myDiv = document.getElementById("letters-guessed");
-var newDiv = document.createElement("span");
-myDiv.appendChild(newDiv);
-
-document.onkeyup = function(event) {
-  keys.push(event.key);
-  
-  newDiv.innerHTML = "";
-  
-  keys.forEach(function(key) {
-    newDiv.innerHTML += key +" ";
-  });
-}
+var badGuessList = [];
 
 function chooseSong() {
   word = songs[Math.floor(Math.random() * songs.length)];
@@ -58,8 +43,8 @@ document.onkeyup = function(event) {
       guessesLeft--;
       badGuessList.push(guess);
       document.getElementById("guesses").innerHTML= "Guesses Left: " + guessesLeft;
-      document.getElementById("letters").innerHTML= badGuessList;
-    }
+      document.getElementById("letters").innerHTML= badGuessList.join(" ");
+    } 
 
   // Reset after player wins
 
@@ -72,7 +57,7 @@ document.onkeyup = function(event) {
       answerArray[i] = "_";
       document.getElementById("wins").innerHTML= "Wins: " + win;
       document.getElementById("guesses").innerHTML= "Guesses Left: " + guessesLeft;
-      document.getElementById("letters").innerHTML= badGuessList = []
+      document.getElementById("letters").innerHTML= badGuessList = [];
     }
   }
 
@@ -86,7 +71,7 @@ document.onkeyup = function(event) {
       answerArray[i] = "_";
       document.getElementById("wins").innerHTML= "Wins: " + win;
       document.getElementById("guesses").innerHTML= "Guesses Left: " + guessesLeft;
-      document.getElementById("letters").innerHTML= badGuessList = []
+      document.getElementById("letters").innerHTML= badGuessList = [];
     }
   } 
 
