@@ -35,14 +35,14 @@ document.onkeyup = function(event) {
 
   // Guesses left
 
-   for (var i = 0; i < word.length; i++) {
+   
     if (word.includes(guess)) {
       document.getElementById("guesses").innerHTML= "Guesses Left: " + guessesLeft;
       console.log(word.includes(guess));
       } else {
         guessesLeft--;
+        document.getElementById("guesses").innerHTML= "Guesses Left: " + guessesLeft;
       }
-    }
 
   // Reset after player wins
 
