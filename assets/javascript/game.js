@@ -36,15 +36,15 @@ document.onkeyup = function(event) {
 
   // Guesses left
    
-  if (word.includes(guess)) {
-    document.getElementById("guesses").innerHTML= "Guesses Left: " + guessesLeft;
-    console.log(word.includes(guess));
-    } else {
+  if (!word.includes(guess)) {
+    if (!badGuessList.includes(guess)); {
       guessesLeft--;
       badGuessList.push(guess);
       document.getElementById("guesses").innerHTML= "Guesses Left: " + guessesLeft;
       document.getElementById("letters").innerHTML= badGuessList.join(" ");
     } 
+
+  }
 
   // Reset after player wins
 
