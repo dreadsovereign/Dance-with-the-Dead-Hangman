@@ -37,7 +37,7 @@ document.onkeyup = function(event) {
   // Guesses left
    
   if (!word.includes(guess)) {
-    if (!badGuessList.includes(guess)); {
+    if (!badGuessList.includes(guess)) {
       guessesLeft--;
       badGuessList.push(guess);
       document.getElementById("guesses").innerHTML= "Guesses Left: " + guessesLeft;
