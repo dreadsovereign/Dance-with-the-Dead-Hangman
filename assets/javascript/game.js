@@ -5,6 +5,7 @@ var i = 0;
 var guessesLeft = 12;
 var answerArray = [];
 var badGuessList = [];
+var isValid = false;
 
 function chooseSong() {
   word = songs[Math.floor(Math.random() * songs.length)];
@@ -18,7 +19,17 @@ function chooseSong() {
 }
 chooseSong();
 
+document.onkeypress = function(evt) {
+   evt = evt || window.event;
+   var charCode = evt.which || evt.keyCode;
+   var charStr = String.fromCharCode(charCode);
+   if (/[a-z]/i.test(charStr)) {
+       isValid = true;
+   }
+};
+
 document.onkeyup = function(event) {
+  if(isValid) {
   var guess = event.key;
 
   for (var i = 0; i < word.length; i++) {
@@ -45,6 +56,7 @@ document.onkeyup = function(event) {
     } 
 
   }
+  isValid = false;
 
   // Reset after player wins
 
@@ -77,6 +89,7 @@ document.onkeyup = function(event) {
 
   document.getElementById("song").innerHTML= answerArray.join(" ");
 
+ }
 }
 
 
