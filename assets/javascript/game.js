@@ -6,6 +6,7 @@ var guessesLeft = 12;
 var answerArray = [];
 var badGuessList = [];
 var isValid = false;
+var audio1 = new Audio("assets/songs/06 Riot.m4a")
 
 function chooseSong() {
   word = songs[Math.floor(Math.random() * songs.length)];
